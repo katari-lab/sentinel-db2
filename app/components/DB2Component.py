@@ -1,10 +1,11 @@
 from app.entities.DB2ConnectionEntity import DB2ConnectionEntity
+import ibm_db_dbi as db
 
 
-class ConnectionComponent:
+class DB2Component:
 
     @staticmethod
-    def validate_connection( entity: DB2ConnectionEntity):
+    def validate_connection(entity: DB2ConnectionEntity):
         conn = None
         try:
             conn = db.connect(entity.get_connection(), "", "")

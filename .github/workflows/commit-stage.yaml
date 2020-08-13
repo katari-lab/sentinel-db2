@@ -1,0 +1,22 @@
+name: Build Image
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+    build:
+      name: Build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: docker compose build
+          working-directory: ./container
+          run: docker-compose build
+        - name: docker login
+          run: docker login -u="${{ secrets.DOCKER_USERNAME }}" -p="${{ secrets.DOCKER_PASSWORD }}"
+        - name: docker tag
+          run: |
+            docker tag katari/sentinel-db2 katarilab/sentinel-db2:latest
+            docker tag katari/sentinel-db2 katarilab/sentinel-db2:${{ github.sha }}
+            docker push katarilab/sentinel-db2
