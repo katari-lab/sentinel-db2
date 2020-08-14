@@ -9,7 +9,7 @@ import sys
 import os
 
 
-logging.basicConfig(filename= os.path.join(ConfigurationComponent.get_log_dir(), 'app.log'), level=logging.INFO,
+logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 app = Flask(__name__)
