@@ -3,3 +3,4 @@ flask==1.1.2
 ibm-db==3.0.2
 pandas==1.1.0
 prometheus_client==0.8.0
+requests==2.24.0
